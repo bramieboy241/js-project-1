@@ -1,0 +1,28 @@
+.text-color {
+    color: #FF2A00
+}
+
+.container_img {
+    background-color: gray;
+    background-image: url("/images/coding.jpg");
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+
+.background-nav {
+    background-color:black;
+}
+
+.accordion-item .accordion-item-header {
+    background-color: #FF2A00;
+}
+
+.background-accordion {
+    background-color: #FF2A00;
+}
+
+body {
+    background-color: #FF2A00;
+}
+
