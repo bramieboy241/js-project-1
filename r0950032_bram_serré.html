@@ -130,7 +130,7 @@
                 <hr>
                 <div class="row">
                     <div class="col-12 text-center">
-                        <button type="button" class="btn btn-primary" id="liveAlertBtn">Wave
+                        <button type="button" class="btn btn-primary" id="trigger">Wave
                             your magic wand</button>
                     </div>
                 </div>
@@ -140,21 +140,44 @@
             <div class="alert m-3 alert-primary" id="status" role="alert">
                 <h4 id="s-h4"></h4>
                 <p id="s-p"></p>
-              </div>
-              <div class="alert m-3 alert-primary" id="betalingswijze" role="alert">
+            </div>
+            <div class="alert m-3 alert-primary" id="betalingswijze" role="alert">
                 <h4></h4>
                 <p></p>
-              </div>
+            </div>
         </div>
     </div>
     <script>
+
+
         // alerts declareren
         const status = document.querySelector('#status');
         const betalingswijze = document.querySelector('#betalingswijze');
 
         // alerts onzichtbaar maken
-        // status.classList.remove('alert-primary');
-        // betalingswijze.classList.remove('alert-primary');
+        status.classList.remove('alert-primary');
+        betalingswijze.classList.remove('alert-primary');
+
+        // button declareren + event toevoegen
+        const button = document.querySelector('#trigger');
+        button.addEventListener('click', validateForm, false);
+
+        // functie aanmaken validateForm
+        function validateForm() {
+            // array errors aanmaken
+            let errors = [1, 2, 3];
+
+            // kijken of errors leeg is en goede alerts tonen
+            if (errors.length == 0) {
+                status.classList.add('alert-success');
+                document.querySelector('#s-h4').append('Goed gedaan!');
+                document.querySelector('#s-p').append('Aww yeah, je werd geregistreerd');
+            } else {
+                status.classList.add('alert-danger');
+                document.querySelector('#s-h4').append('Yikes, errors!');
+                document.querySelector('#s-p').innerHTML += errors.join('<br>');
+            }
+        }
     </script>
 </body>
 
