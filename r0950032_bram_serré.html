@@ -2,183 +2,223 @@
 <html lang="nl-be">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulier</title>
-    <link rel="stylesheet" href="/js-project-1/css/bootstrap.min.css">
-    <style>
-        .button {
-            width: 85%;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulier</title>
+  <link rel="stylesheet" href="/js-project-1/css/bootstrap.min.css">
+  <style>
+    .button {
+      width: 85%;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-12  col-md-8">
-            <form class="m-3" id="formulier">
-                <h1>Registreer</h1>
-                <p>Meld je aan bij Ancroc Services, wij beschermen jouw software tegen malware!</p>
-                <div class="row">
-                    <div class="col-12  col-md-6">
-                        <label for="voornaam">Voornaam</label>
-                        <input type="text" class="form-control" placeholder="Uw voornaam">
-                    </div>
-                    <div class="col-12  col-md-6">
-                        <label for="naam">Naam</label>
-                        <input type="text" class="form-control" placeholder="Uw naam">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12  col-md-6">
-                        <label for="gebruikersnaam">Gebruikersnaam</label>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1">@</span>
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                                aria-describedby="basic-addon1">
-                        </div>
-                    </div>
-                    <div class="col-12  col-md-6">
-                        <label for="email">E-mailadres</label>
-                        <input type="email" name="email" id="email" class="form-control" placeholder="name@example.com">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12  col-md-6">
-                        <div class="mb-3">
-                            <label for="wachtwoord">Wachtwoord</label>
-                            <input type="password" class="form-control" aria-describedby="wachtwoordVereiste">
-                            <div id="wachtwoordVereiste" class="form-text">Je wachtwoord moet minstens 8 tekens lang
-                                zijn</div>
-                        </div>
-                    </div>
-                    <div class="col-12  col-md-6">
-                        <label for="herhaalWachtwoord">Herhaal wachtwoord</label>
-                        <input type="password" class="form-control">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12  col-md-4">
-                        <label for="land">Land</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <div class="col-12  col-md-4">
-                        <label for="provincie">Provincie</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <div class="col-12  col-md-4">
-                        <label for="postcode">Postcode</label>
-                        <input type="number" class="form-control">
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-12  col-md-6">
-                        <h2>Hou me op de hoogte</h2>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="nieuwsbrief">
-                            <label class="form-check-label" for="nieuwsbrief">
-                                Inschrijven voor onze nieuwsbrief
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="voorwaarden">
-                            <label class="form-check-label" for="voorwaarden">
-                                Ik ga akkoord met de algemene voorwaarden.
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-12  col-md-6">
-                        <h2>Betaling</h2>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="betaling" value="bankingapp">
-                            <label class="form-check-label" for="bankingapp">
-                                Banking app
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="betaling" value="overschrijving">
-                            <label class="form-check-label" for="overschrijving">
-                                Overschrijving
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="betaling" value="visacard">
-                            <label class="form-check-label" for="visacard">
-                                Visa card
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="betaling" value="paypal">
-                            <label class="form-check-label" for="paypal">
-                                Paypal
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <button type="button" class="btn btn-primary" id="trigger">Wave
-                            your magic wand</button>
-                    </div>
-                </div>
-            </form>
+  <div class="row">
+    <div class="col-12  col-md-8">
+      <form class="m-3" id="formulier">
+        <h1>Registreer</h1>
+        <p>Meld je aan bij Ancroc Services, wij beschermen jouw software tegen malware!</p>
+        <div class="row">
+          <div class="col-12  col-md-6">
+            <label for="voornaam">Voornaam</label>
+            <input type="text" id="voornaam" class="form-control" placeholder="Uw voornaam">
+          </div>
+          <div class="col-12  col-md-6">
+            <label for="naam">Naam</label>
+            <input type="text" id="naam" class="form-control" placeholder="Uw naam">
+          </div>
         </div>
-        <div class="col-12 col-md-4">
-            <div class="alert m-3 alert-primary" id="status" role="alert">
-                <h4 id="s-h4"></h4>
-                <p id="s-p"></p>
+        <div class="row">
+          <div class="col-12  col-md-6">
+            <label for="gebruikersnaam">Gebruikersnaam</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">@</span>
+              <input type="text" class="form-control" placeholder="divoc91" id="gebruikersnaam" aria-label="Username"
+                aria-describedby="basic-addon1">
             </div>
-            <div class="alert m-3 alert-primary" id="betalingswijze" role="alert">
-                <h4></h4>
-                <p></p>
-            </div>
+          </div>
+          <div class="col-12  col-md-6">
+            <label for="email">E-mailadres</label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="name@example.com">
+          </div>
         </div>
+        <div class="row">
+          <div class="col-12  col-md-6">
+            <div class="mb-3">
+              <label for="wachtwoord">Wachtwoord</label>
+              <input type="password" class="form-control" aria-describedby="wachtwoordVereiste">
+              <div id="wachtwoordVereiste" class="form-text">Je wachtwoord moet minstens 8 tekens lang
+                zijn</div>
+            </div>
+          </div>
+          <div class="col-12  col-md-6">
+            <label for="herhaalWachtwoord">Herhaal wachtwoord</label>
+            <input type="password" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 mb-3">
+            <label for="adres">Adres</label>
+            <input type="text" id="adres" class="form-control" placeholder="Uw adres en huisnummer">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12  col-md-4">
+            <label for="land">Land</label>
+            <select class="form-select" id="land" aria-label="Default select example">
+              <option value="" selected>Kies een land</option>
+              <option value="1">België</option>
+              <option value="2">Nederland</option>
+              <option value="3">Spanje</option>
+              <option value="4">Frankrijk</option>
+              <option value="5">Duitsland</option>
+            </select>
+          </div>
+          <div class="col-12  col-md-4">
+            <label for="provincie">Provincie</label>
+            <select class="form-select" id="provincie" aria-label="Default select example">
+              <option value="" selected>Kies een provincie</option>
+              <option value="1">Brussel</option>
+              <option value="2">Amsterdam</option>
+              <option value="3">La Rioja</option>
+              <option value="4">Maine</option>
+              <option value="5">Berlijn</option>
+            </select>
+          </div>
+          <div class="col-12  col-md-4">
+            <label for="postcode">Postcode</label>
+            <input type="number" class="form-control">
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12  col-md-6">
+            <h2>Hou me op de hoogte</h2>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="nieuwsbrief">
+              <label class="form-check-label" for="nieuwsbrief">
+                Inschrijven voor onze nieuwsbrief
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="voorwaarden">
+              <label class="form-check-label" for="voorwaarden">
+                Ik ga akkoord met de algemene voorwaarden.
+              </label>
+            </div>
+          </div>
+          <div class="col-12  col-md-6">
+            <h2>Betaling</h2>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="betaling" value="bankingapp">
+              <label class="form-check-label" for="bankingapp">
+                Banking app
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="betaling" value="overschrijving">
+              <label class="form-check-label" for="overschrijving">
+                Overschrijving
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="betaling" value="visacard">
+              <label class="form-check-label" for="visacard">
+                Visa card
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="betaling" value="paypal">
+              <label class="form-check-label" for="paypal">
+                Paypal
+              </label>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12 text-center">
+            <button type="button" class="btn btn-primary" id="trigger">Wave
+              your magic wand</button>
+          </div>
+        </div>
+      </form>
     </div>
-    <script>
+    <div class="col-12 col-md-4">
+      <div class="alert m-3 alert-primary" id="status" role="alert">
+        <h4 id="s-h4"></h4>
+        <p id="s-p"></p>
+      </div>
+      <div class="alert m-3 alert-primary" id="betalingswijze" role="alert">
+        <h4></h4>
+        <p></p>
+      </div>
+    </div>
+  </div>
+  <script>
+    // array errors aanmaken
+    let errors = [];
+    // alerts declareren
+    const status = document.querySelector('#status');
+    const betalingswijze = document.querySelector('#betalingswijze');
 
+    // alerts onzichtbaar maken
+    status.classList.remove('alert-primary');
+    betalingswijze.classList.remove('alert-primary');
 
-        // alerts declareren
-        const status = document.querySelector('#status');
-        const betalingswijze = document.querySelector('#betalingswijze');
+    // button declareren + event toevoegen
+    const button = document.querySelector('#trigger');
+    button.addEventListener('click', validateForm, false);
 
-        // alerts onzichtbaar maken
-        status.classList.remove('alert-primary');
-        betalingswijze.classList.remove('alert-primary');
+    // functie aanmaken validateForm
+    function validateForm() {
+      // leegmaken van de alerts;
+      let p = document.querySelector('#s-p');
+      let s = document.querySelector('#s-h4');
+      s.textContent = "";
+      p.textContent = "";
+      
+      // array errors refreshen
+      errors.length = 0;
 
-        // button declareren + event toevoegen
-        const button = document.querySelector('#trigger');
-        button.addEventListener('click', validateForm, false);
+      // kijken of het veld voornaam leeg is
+      checkEmptyField(voornaam, "Het veld voornaam is een verplicht veld");
 
-        // functie aanmaken validateForm
-        function validateForm() {
-            // array errors aanmaken
-            let errors = [1, 2, 3];
+      // kijken of het veld naam leeg is
+      checkEmptyField(naam, "Het veld naam is een verplicht veld");
 
-            // kijken of errors leeg is en goede alerts tonen
-            if (errors.length == 0) {
-                status.classList.add('alert-success');
-                document.querySelector('#s-h4').append('Goed gedaan!');
-                document.querySelector('#s-p').append('Aww yeah, je werd geregistreerd');
-            } else {
-                status.classList.add('alert-danger');
-                document.querySelector('#s-h4').append('Yikes, errors!');
-                document.querySelector('#s-p').innerHTML += errors.join('<br>');
-            }
-        }
-    </script>
+      // kijken of het veld gebruikersnaam leeg is
+      checkEmptyField(gebruikersnaam, "Het veld gebruikersnaam is een verplicht veld");
+
+      // kijken of het veld adres leeg is
+      checkEmptyField(adres, "Het veld adres is een verplicht veld");
+
+      // kijken of het veld land leeg is
+      checkEmptyField(land, "Het veld land is een verplicht veld")
+
+      // kijken of het veld provincie leeg is
+      checkEmptyField(provincie, "Het veld provincie is een verplicht in te vullen veld");
+
+      // kijken of errors leeg is en goede alerts tonen
+      if (errors.length == 0) {
+        status.classList.add('alert-success');
+        document.querySelector('#s-h4').append('Goed gedaan!');
+        document.querySelector('#s-p').append('Aww yeah, je werd geregistreerd');
+      } else {
+        status.classList.add('alert-danger');
+        s.append('Yikes, errors!');
+        p.innerHTML += errors.join('<br>');
+      }
+    }
+
+    function checkEmptyField(veld, melding) {
+      if (veld.value == "") {
+        errors.push(melding);
+      }
+    }
+  </script>
 </body>
 
 </html>
