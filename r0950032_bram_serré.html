@@ -48,14 +48,12 @@
           <div class="col-12  col-md-6">
             <div class="mb-3">
               <label for="wachtwoord">Wachtwoord</label>
-              <input type="password" class="form-control" aria-describedby="wachtwoordVereiste">
-              <div id="wachtwoordVereiste" class="form-text">Je wachtwoord moet minstens 8 tekens lang
-                zijn</div>
+              <input type="password" id="wachtwoord" class="form-control">
             </div>
           </div>
           <div class="col-12  col-md-6">
             <label for="herhaalWachtwoord">Herhaal wachtwoord</label>
-            <input type="password" class="form-control">
+            <input type="password" id="herhaalWachtwoord" class="form-control">
           </div>
         </div>
         <div class="row">
@@ -174,12 +172,12 @@
 
     // functie aanmaken validateForm
     function validateForm() {
-      // leegmaken van de alerts;
+      // resetten van de alerts;
       let p = document.querySelector('#s-p');
       let s = document.querySelector('#s-h4');
       s.textContent = "";
       p.textContent = "";
-      
+
       // array errors refreshen
       errors.length = 0;
 
@@ -201,15 +199,26 @@
       // kijken of het veld provincie leeg is
       checkEmptyField(provincie, "Het veld provincie is een verplicht in te vullen veld");
 
+      if (!validateEmail(email)) {
+        errors.push("E-mailadres is niet correct.");
+      };
+
+      validateWachtwoord();
+
       // kijken of errors leeg is en goede alerts tonen
       if (errors.length == 0) {
+        status.classList.remove('alert-danger');
         status.classList.add('alert-success');
-        document.querySelector('#s-h4').append('Goed gedaan!');
-        document.querySelector('#s-p').append('Aww yeah, je werd geregistreerd');
+        s.append('Goed gedaan!');
+        p.append('Aww yeah, je werd geregistreerd');
+        console.log(status.classList);
       } else {
+        status.classList.remove('alert-success');
         status.classList.add('alert-danger');
         s.append('Yikes, errors!');
         p.innerHTML += errors.join('<br>');
+        console.log(status.classList);
+        console.log(errors);
       }
     }
 
@@ -217,6 +226,32 @@
     function checkEmptyField(veld, melding) {
       if (veld.value == "") {
         errors.push(melding);
+      }
+    }
+
+    // validatie voor het emailadres
+    function validateEmail(emailadres) {
+      // https://www.simplilearn.com/tutorials/javascript-tutorial/email-validation-in-javascript
+      var validRegex = /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+      if (emailadres.value.match(validRegex)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    function validateWachtwoord() {
+      if (wachtwoord.value == "") {
+        errors.push("Het veld wachtwoord is een verplicht in te vullen veld.");
+      }
+      else if (herhaalWachtwoord.value == "") {
+        errors.push("Het veld herhaal wachtwoord is een verplicht in te vullen veld.");
+      }
+      else if (wachtwoord.value.length < 7) {
+        errors.push("Het wachtwoord moet langer dan 7 tekens zijn.");
+      }
+      else if (wachtwoord.value != herhaalWachtwoord.value) {
+        errors.push("Het wachtwoord en herhaling wachtwoord moeten hetzelfde zijn.");
       }
     }
   </script>
