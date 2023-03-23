@@ -110,25 +110,25 @@
           <div class="col-12  col-md-6">
             <h2>Betaling</h2>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="betaling" value="bankingapp">
+              <input class="form-check-input" type="radio" name="betaling" value="bankingapp" id="b">
               <label class="form-check-label" for="bankingapp">
                 Banking app
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="betaling" value="overschrijving">
+              <input class="form-check-input" type="radio" name="betaling" value="overschrijving" id="o">
               <label class="form-check-label" for="overschrijving">
                 Overschrijving
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="betaling" value="visacard">
+              <input class="form-check-input" type="radio" name="betaling" value="visacard" id="v">
               <label class="form-check-label" for="visacard">
                 Visa card
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="betaling" value="paypal">
+              <input class="form-check-input" type="radio" name="betaling" value="paypal" id="p">
               <label class="form-check-label" for="paypal">
                 Paypal
               </label>
@@ -145,13 +145,17 @@
       </form>
     </div>
     <div class="col-12 col-md-4">
-      <div class="alert m-3 alert-primary" id="status" role="alert">
+      <div class="alert m-3 alert-success" id="success" role="alert">
         <h4 id="s-h4"></h4>
         <p id="s-p"></p>
       </div>
       <div class="alert m-3 alert-primary" id="betalingswijze" role="alert">
-        <h4></h4>
-        <p></p>
+        <h4 id="b-h4"></h4>
+        <p id="b-p"></p>
+      </div>
+      <div class="alert m-3 alert-danger" id="error" role="alert">
+        <h4 id="e-h4"></h4>
+        <p id="e-p"></p>
       </div>
     </div>
   </div>
@@ -159,12 +163,14 @@
     // array errors aanmaken
     let errors = [];
     // alerts declareren
-    const status = document.querySelector('#status');
+    const success = document.querySelector('#success');
     const betalingswijze = document.querySelector('#betalingswijze');
+    const error = document.querySelector("#error");
 
     // alerts onzichtbaar maken
-    status.classList.remove('alert-primary');
-    betalingswijze.classList.remove('alert-primary');
+    success.classList.add('d-none');
+    betalingswijze.classList.add('d-none');
+    error.classList.add('d-none');
 
     // button declareren + event toevoegen
     const button = document.querySelector('#trigger');
@@ -172,12 +178,6 @@
 
     // functie aanmaken validateForm
     function validateForm() {
-      // resetten van de alerts;
-      let p = document.querySelector('#s-p');
-      let s = document.querySelector('#s-h4');
-      s.textContent = "";
-      p.textContent = "";
-
       // array errors refreshen
       errors.length = 0;
 
@@ -205,20 +205,21 @@
 
       validateWachtwoord();
 
+      validatePayment(document.querySelector("#b"));
+      validatePayment(document.querySelector("#o"));
+      validatePayment(document.querySelector("#v"));
+      validatePayment(document.querySelector("#p"));
+
       // kijken of errors leeg is en goede alerts tonen
       if (errors.length == 0) {
-        status.classList.remove('alert-danger');
-        status.classList.add('alert-success');
-        s.append('Goed gedaan!');
-        p.append('Aww yeah, je werd geregistreerd');
-        console.log(status.classList);
+        success.classList.remove('d-none');
+        document.querySelector("#s-h4").textContent = 'Goed gedaan!';
+        document.querySelector("#s-p").textContent = 'Aww yeah, je werd geregistreerd';
+        betalingswijze.classList.remove("d-none");
       } else {
-        status.classList.remove('alert-success');
-        status.classList.add('alert-danger');
-        s.append('Yikes, errors!');
-        p.innerHTML += errors.join('<br>');
-        console.log(status.classList);
-        console.log(errors);
+        error.classList.remove('d-none');
+        document.querySelector("#e-h4").textContent = 'Yikes, errors!';
+        document.querySelector("#e-p").innerHTML = errors.join('<br>');
       }
     }
 
@@ -254,6 +255,14 @@
         errors.push("Het wachtwoord en herhaling wachtwoord moeten hetzelfde zijn.");
       }
     }
+      function validatePayment(veld) {
+        // https://stackoverflow.com/questions/1423777/how-can-i-check-whether-a-radio-button-is-selected-with-javascript
+        if (veld.checked == true) {
+          document.querySelector("#b-h4").textContent = `Betalingswijze`;
+          document.querySelector("#b-p").textContent = `Je betalingswijze is ${veld.value}`;
+        }
+      }
+
   </script>
 </body>
 
