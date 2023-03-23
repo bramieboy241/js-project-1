@@ -87,7 +87,7 @@
           </div>
           <div class="col-12  col-md-4">
             <label for="postcode">Postcode</label>
-            <input type="number" class="form-control">
+            <input type="number" class="form-control" id="postcode">
           </div>
         </div>
         <hr>
@@ -95,13 +95,13 @@
           <div class="col-12  col-md-6">
             <h2>Hou me op de hoogte</h2>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="nieuwsbrief">
+              <input class="form-check-input" type="checkbox" id="nieuwsbrief">
               <label class="form-check-label" for="nieuwsbrief">
                 Inschrijven voor onze nieuwsbrief
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="voorwaarden">
+              <input class="form-check-input" type="checkbox" id="voorwaarden">
               <label class="form-check-label" for="voorwaarden">
                 Ik ga akkoord met de algemene voorwaarden.
               </label>
@@ -205,18 +205,42 @@
 
       validateWachtwoord();
 
-      validatePayment(document.querySelector("#b"));
-      validatePayment(document.querySelector("#o"));
-      validatePayment(document.querySelector("#v"));
-      validatePayment(document.querySelector("#p"));
+      let wijze;
+
+      wijze = validatePayment(document.querySelector("#b"));
+
+      if(wijze == "") {
+        wijze = validatePayment(document.querySelector("#o"));
+      }
+
+      if(wijze == "") {
+        wijze = validatePayment(document.querySelector("#v"));
+      }
+
+      if(wijze == "") {
+        wijze = validatePayment(document.querySelector("#p"));
+      }
+
+      if (wijze == "") {
+        errors.push("Duid een betalingswijze aan");
+      }
+
+      checkPc(postcode)
+
+      if (!voorwaarden.checked) {
+        errors.push("Accepteer de voorwaarde");
+      }
 
       // kijken of errors leeg is en goede alerts tonen
       if (errors.length == 0) {
+        error.classList.add("d-none");
         success.classList.remove('d-none');
         document.querySelector("#s-h4").textContent = 'Goed gedaan!';
         document.querySelector("#s-p").textContent = 'Aww yeah, je werd geregistreerd';
         betalingswijze.classList.remove("d-none");
       } else {
+        success.classList.add("d-none");
+        betalingswijze.classList.add("d-none");
         error.classList.remove('d-none');
         document.querySelector("#e-h4").textContent = 'Yikes, errors!';
         document.querySelector("#e-p").innerHTML = errors.join('<br>');
@@ -255,13 +279,24 @@
         errors.push("Het wachtwoord en herhaling wachtwoord moeten hetzelfde zijn.");
       }
     }
-      function validatePayment(veld) {
-        // https://stackoverflow.com/questions/1423777/how-can-i-check-whether-a-radio-button-is-selected-with-javascript
-        if (veld.checked == true) {
-          document.querySelector("#b-h4").textContent = `Betalingswijze`;
-          document.querySelector("#b-p").textContent = `Je betalingswijze is ${veld.value}`;
-        }
+    function validatePayment(veld) {
+      // https://stackoverflow.com/questions/1423777/how-can-i-check-whether-a-radio-button-is-selected-with-javascript
+      if (veld.checked == true) {
+        document.querySelector("#b-h4").textContent = `Betalingswijze`;
+        document.querySelector("#b-p").textContent = `Je betalingswijze is ${veld.value}`;
+        return veld.value;
       }
+      return "";
+    }
+
+    function checkPc(veld) {
+      if (veld.value == "") {
+        errors.push("Het veld postcode is vereist.");
+      }
+      else if (veld.value < 1000 || veld.value > 9999) {
+        errors.push("De waarde van postcode moet tussen 1000 en 9999 liggen.")
+      }
+    }
 
   </script>
 </body>
